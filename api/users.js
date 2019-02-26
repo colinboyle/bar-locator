@@ -60,10 +60,10 @@ router.post("/newsletter", (req, res) => {
   const options = {
     url: "https://us20.api.mailchimp.com/3.0/lists/fd4474e11a",
     method: "POST",
-    user: "AlexNDevAcct@gmail.com: 79d0fe21835f9d7f4142eb16b62601a1-us20",
+    user: //API USER,
     headers: {
       "content-type": "application/json",
-      Authorization: "apikey 79d0fe21835f9d7f4142eb16b62601a1-us20"
+      Authorization: //API Key
     },
     body: postData
   };
