@@ -1,5 +1,13 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700");
 
+:root {
+  --main-bg-color: #2e5266;
+  --sec-bg-color: #6e8898;
+  --main-hl-color: #9fb1bc;
+  --sec-hl-color: #d3d0cb;
+  --main-extra-color: #e2c044;
+}
+
 html {
   height: 100%;
 }
@@ -16,7 +24,7 @@ body {
   height: 100%;
   min-height: 35rem;
   position: relative;
-  font-family: "Source Sans Pro";
+  font-family: "Roboto", sans-serif;
   font-weight: 300;
 }
 
@@ -26,7 +34,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Merriweather";
+  font-family: "Roboto", sans-serif;
   font-weight: 700;
 }
 
@@ -40,7 +48,6 @@ video {
   height: auto;
   -webkit-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
-  z-index: 0;
 }
 
 @media (pointer: coarse) and (hover: none) {
@@ -52,16 +59,35 @@ video {
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: #1f1e1d;
+  background-color: var(--sec-bg-color);
+}
 
-  z-index: 1;
+.comingSoon {
+  background-image: url(/assets/alebg.jpg);
+  background-size: cover;
+  background-position: bottom;
+}
+
+#logo {
+  position: absolute;
+  left: 60px;
+  bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  #logo {
+    right: 60px;
+    top: 30px;
+    left: inherit;
+    bottom: inherit;
+  }
 }
 
 .masthead {
   position: relative;
   overflow: hidden;
   padding-bottom: 3rem;
-  z-index: 2;
+  z-index: 1;
 }
 
 .masthead .masthead-bg {
@@ -73,11 +99,7 @@ video {
   width: 100%;
   min-height: 35rem;
   height: 100%;
-  background-color: rgba(0, 46, 102, 0.8);
-  -webkit-transform: skewY(4deg);
-  transform: skewY(4deg);
-  -webkit-transform-origin: bottom right;
-  transform-origin: bottom right;
+  background-color: var(--main-bg-color);
   z-index: -1;
 }
 
@@ -121,7 +143,7 @@ video {
   }
   .masthead .masthead-content {
     padding-left: 3rem;
-    padding-right: 10rem;
+    padding-right: 5rem;
   }
   .masthead .masthead-content h1 {
     font-size: 3.5rem;
@@ -131,9 +153,13 @@ video {
   }
 }
 
+.how-to {
+  background-color: var(--sec-hl-color);
+  max-width: 600px;
+}
+
 .social-icons {
-  position: absolute;
-  margin-bottom: 2rem;
+  padding-bottom: 2rem;
   width: 100%;
   z-index: 2;
 }
@@ -153,7 +179,7 @@ video {
 .social-icons ul > li > a {
   display: block;
   color: white;
-  background-color: rgba(0, 46, 102, 0.8);
+  background-color: var(--main-extra-color);
   border-radius: 100%;
   font-size: 2rem;
   line-height: 4rem;
@@ -190,69 +216,31 @@ video {
     height: 4rem;
     width: 4rem;
   }
-  .social-icons ul > li > a:hover {
-    background-color: #002e66;
+
+  .social-icons:hover > ul > li > a {
+    background-color: var(--sec-hl-color);
+  }
+  .social-icons ul li a:hover {
+    background-color: var(--main-extra-color);
   }
 }
 
+.input-group-append:hover {
+  right: -5px;
+}
+
 .btn-secondary {
-  background-color: #cd9557;
-  border-color: #cd9557;
+  background-color: var(--main-hl-color);
+  border-color: var(--main-hl-color);
 }
 
 .btn-secondary:active,
 .btn-secondary:focus,
 .btn-secondary:hover {
-  background-color: #ba7c37 !important;
-  border-color: #ba7c37 !important;
+  background-color: var(--sec-hl-color) !important;
+  border-color: var(--sec-hl-color) !important;
 }
 
 .input {
   font-weight: 300 !important;
-}
-
-.bcard {
-  width: 3.5in;
-  height: 2in;
-  background-color: #1f1e1d;
-}
-
-.bcardpsuedo {
-  content: "";
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  background: linear-gradient(
-    45deg,
-    #fb0094,
-    #0000ff,
-    #00ff00,
-    #ffff00,
-    #ff0000,
-    #fb0094,
-    #0000ff,
-    #00ff00,
-    #ffff00,
-    #ff0000
-  );
-  background-size: 400%;
-  width: calc(100% + 4px);
-  height: calc(100% + 4px);
-  z-index: -1;
-  animation: animated-shadow 10s linear infinite alternate;
-}
-.bcard::after {
-  filter: blur(30px);
-}
-
-@keyframes animated-shadow {
-  from {
-    background-position: 0 0;
-  }
-  50% {
-    background-position: 100% 0;
-  }
-  to {
-    background-position: 0 0;
-  }
 }

@@ -60,7 +60,7 @@ class Login extends Component {
               <p className="lead text-center">
                 Sign in to your DevConnector account
               </p>
-              <form onSubmit={this.onSubmit}>
+              <form onSubmit={this.onSubmit} noValidate>
                 <TextFieldGroup
                   placeholder="Email Address"
                   name="email"
@@ -68,6 +68,7 @@ class Login extends Component {
                   value={this.state.email}
                   onChange={this.onChange}
                   error={errors.email}
+                  prepend="fas fa-user"
                 />
                 <TextFieldGroup
                   placeholder="Password"
@@ -76,6 +77,7 @@ class Login extends Component {
                   value={this.state.password}
                   onChange={this.onChange}
                   error={errors.password}
+                  prepend="fas fa-lock"
                 />
                 <input type="submit" className="btn btn-info btn-block mt-4" />
               </form>
