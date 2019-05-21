@@ -47,7 +47,7 @@ class ComingSoon extends Component {
 
   render() {
     return (
-      <div className="comingSoon container-fluid h-100">
+      <div className="comingSoon d-flex flex-column container-fluid">
         <img id="logo" src="/assets/barLogo.png" />
         <div className="row h-100">
           <Masthead
@@ -112,7 +112,7 @@ class ComingSoon extends Component {
               />
     </div>
           </div>*/}
-          <div className="social-icons col-md-2 col-sm-12 col-lg-7 d-flex p-0 align-items-end justify-content-center secbg">
+          <div className="social-icons col-md-2 col-sm-12 col-lg-7 d-flex justify-content-center secbg">
             <ul className="list-unstyled text-center mb-0">
               <li className="list-unstyled-item">
                 <a href="#">

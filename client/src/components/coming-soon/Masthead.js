@@ -17,8 +17,8 @@ const Masthead = props => {
       <div className="container h-100">
         <div className="row h-100">
           <div className="my-auto">
-            <div className="masthead-content text-white py-5 py-md-0">
-              <h1 className="mb-3">THERE'S SOMETHING BREWING</h1>
+            <div className="masthead-content text-white">
+              <h1 className="mb-3">SOMETHING'S BREWING</h1>
               <p className="mb-5">
                 Subscribe below to put your name at the top of list for the twin
                 cities newest bar card. Cheers!
