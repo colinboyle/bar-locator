@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 const passport = require("passport");
 const request = require("request");
 
-const keys = require("../config/keys");
+//const keys = require("../config/keys");
 
 const validateLoginInput = require("../validation/login");
 const validateRegisterInput = require("../validation/register");
@@ -57,13 +57,16 @@ router.post("/newsletter", (req, res) => {
 
   const postData = JSON.stringify(data);
 
+  const mailChimpKey =
+    process.env.mailChimpKey || require("../config/keys").MailChimpAPIKey;
+
   const options = {
     url: "https://us20.api.mailchimp.com/3.0/lists/fd4474e11a",
     method: "POST",
-    user: "AlexNDevAcct@gmail.com: " + keys.MailChimpAPIKey,
+    user: "AlexNDevAcct@gmail.com: " + mailChimpKey,
     headers: {
       "content-type": "application/json",
-      Authorization: "apikey " + keys.MailChimpAPIKey
+      Authorization: "apikey " + mailChimpKey
     },
     body: postData
   };
