@@ -30,6 +30,20 @@ if (localStorage.jwtToken) {
 }
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+    this.connecToServer = this.connecToServer.bind(this);
+  }
+
+  connecToServer() {
+    fetch("/").then(res => res.json());
+  }
+
+  componentDidMount() {
+    this.connecToServer();
+  }
+
   render() {
     return (
       <Provider store={store}>
