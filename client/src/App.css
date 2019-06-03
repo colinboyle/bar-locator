@@ -8,18 +8,6 @@
   --main-extra-color: #e2c044;
 }
 
-html {
-  height: 100%;
-}
-
-#root {
-  height: 100%;
-}
-
-.App {
-  height: 100%;
-}
-
 body {
   font-family: "Roboto", sans-serif;
   font-weight: 300;
@@ -67,26 +55,31 @@ video {
 }
 
 #logo {
-  margin-left: 1rem;
-  margin-top: 0.5rem;
-  margin-bottom: 1rem;
+  margin: 10px;
   width: 120px;
 }
 
 @media (min-width: 768px) {
   #logo {
     position: absolute;
-    right: 60px;
-    top: 30px;
+    right: 3vw;
+    top: 3vh;
     left: inherit;
     bottom: inherit;
+    width: 20vh;
+    min-width: 150px;
   }
+}
+
+.mastheadrow {
+  height: 100%;
 }
 
 .masthead {
   position: relative;
   overflow: hidden;
   z-index: 1;
+  padding: 1rem;
 }
 
 .masthead .masthead-bg {
@@ -114,10 +107,27 @@ video {
   font-weight: 700;
 }
 
+@media (max-width: 767px) {
+  .mastheadrow {
+    height: auto;
+  }
+  .masthead {
+    position: absolute;
+    top: 50%;
+    transform: translate(0%, -50%);
+  }
+  .masthead .masthead-content h1 {
+    font-size: 1.5rem;
+  }
+  .masthead .masthead-content p {
+    font-size: 0.9rem;
+    padding-bottom: 1vh;
+  }
+}
+
 .masthead .masthead-content .input-group-newsletter input {
   height: auto;
   font-size: 1rem;
-  padding: 1rem;
 }
 
 .masthead .masthead-content .input-group-newsletter button {
@@ -131,6 +141,7 @@ video {
 @media (min-width: 768px) {
   .masthead {
     width: 80rem;
+    margin: 0;
   }
   .masthead .masthead-bg {
     min-height: 0;
@@ -142,6 +153,7 @@ video {
   .masthead .masthead-content {
     padding-left: 3rem;
     padding-right: 5rem;
+    max-width: 50vw;
   }
   .masthead .masthead-content h1 {
     font-size: 3.5rem;
@@ -157,15 +169,15 @@ video {
 }
 
 .social-icons {
-  padding-bottom: 1rem;
   width: 100%;
   z-index: 2;
+  position: absolute;
+  bottom: 3vh;
 }
 
 .social-icons ul {
   width: 100%;
   text-align: center;
-  padding-top: 3rem;
 }
 
 .social-icons ul > li {
@@ -175,14 +187,16 @@ video {
 }
 
 .social-icons ul > li > a {
-  display: block;
+  /*display: block;
+  line-height: 3rem;*/
+  display: table-cell;
+  vertical-align: middle;
   color: white;
   background-color: var(--main-extra-color);
   border-radius: 100%;
-  font-size: 2rem;
-  line-height: 4rem;
-  height: 4rem;
-  width: 4rem;
+  font-size: 1.5rem;
+  height: 3rem;
+  width: 3rem;
 }
 
 @media (min-width: 768px) {
@@ -191,9 +205,9 @@ video {
     margin: 0;
     position: absolute;
     right: 2.5rem;
-    bottom: 2rem;
+    bottom: 3vh;
     width: auto;
-    padding-bottom: 2rem;
+    padding-bottom: 5vh;
   }
   .social-icons ul {
     margin-top: 0;
@@ -204,7 +218,7 @@ video {
     display: block;
     margin-left: 0;
     margin-right: 0;
-    margin-bottom: 2rem;
+    margin-bottom: 3vh;
   }
   .social-icons ul > li:last-child {
     margin-bottom: 0;
@@ -212,10 +226,6 @@ video {
   .social-icons ul > li > a {
     -webkit-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
-    font-size: 2rem;
-    line-height: 4rem;
-    height: 4rem;
-    width: 4rem;
   }
 
   .social-icons:hover > ul > li > a {

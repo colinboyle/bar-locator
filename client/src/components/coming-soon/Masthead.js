@@ -9,36 +9,42 @@ const Masthead = props => {
     from: { opacity: 0, left: "-350px" },
     config: { friction: 90 }
   });
+  var subscribe = props.subscribed ? (
+    <p>Thanks for subscribing! See you soon.</p>
+  ) : (
+    <form
+      className="input-group-newsletter mr-5"
+      onSubmit={props.onSubmit}
+      noValidate
+    >
+      <TextFieldGroup
+        type="email"
+        name="email"
+        placeholder="Email Address"
+        value={props.email}
+        onChange={props.onChange}
+        error={props.error}
+        info="Don't worry. We hate spam too."
+        append="fas fa-arrow-right"
+      />
+    </form>
+  );
   return (
     <animated.div
-      className="masthead col-sm-12 col-md-7 col-lg-5"
+      className="masthead col-sm-12 col-md-8 col-lg-7"
       style={appearLeft}
     >
       <div className="container h-100">
         <div className="row h-100">
           <div className="my-auto">
             <div className="masthead-content text-white">
-              <h1 className="mb-3">SOMETHING'S BREWING</h1>
-              <p className="mb-5">
-                Subscribe below to put your name at the top of list for the twin
-                cities newest bar card. Cheers!
+              <h1 className="">SOMETHING'S BREWING</h1>
+              <p className="">
+                We're bringing exciting specials to your favorite bars.
+                Subscribe below to hear more from the twin citites' bar card.
+                Cheers!
               </p>
-              <form
-                className="input-group-newsletter mr-5"
-                onSubmit={props.onSubmit}
-                noValidate
-              >
-                <TextFieldGroup
-                  type="email"
-                  name="email"
-                  placeholder="Email Address"
-                  value={props.email}
-                  onChange={props.onChange}
-                  error={props.error}
-                  info="Don't worry. We hate spam too."
-                  append="fas fa-arrow-right"
-                />
-              </form>
+              {subscribe}
             </div>
           </div>
         </div>

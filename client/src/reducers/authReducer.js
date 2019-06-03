@@ -4,7 +4,8 @@ import { SET_CURRENT_USER, NEWSLETTER_SUCCESS } from "../actions/types";
 
 const initialState = {
   isAuthenticated: false,
-  user: {}
+  user: {},
+  subscribed: false
 };
 
 export default function(state = initialState, action) {
@@ -17,7 +18,8 @@ export default function(state = initialState, action) {
       };
     case NEWSLETTER_SUCCESS:
       return {
-        ...state
+        ...state,
+        subscribed: true
       };
     default:
       return state;

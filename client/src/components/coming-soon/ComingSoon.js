@@ -40,19 +40,18 @@ class ComingSoon extends Component {
   onSubmit(e) {
     e.preventDefault();
 
-    console.log("attempting submit");
-
     this.props.newsletterUser({ email: this.state.email });
   }
 
   render() {
     return (
       <div className="comingSoon d-flex flex-column container-fluid">
-        <img id="logo" src="/assets/barLogo.png" />
-        <div className="row h-100">
+        <img id="logo" alt="The Bar Card" src="/assets/barLogo.png" />
+        <div className="row mastheadrow">
           <Masthead
             onSubmit={this.onSubmit}
             onChange={this.onChange}
+            subscribed={this.props.auth.subscribed}
             email={this.state.email}
             error={this.state.errors}
           />
@@ -112,7 +111,7 @@ class ComingSoon extends Component {
               />
     </div>
           </div>*/}
-          <div className="social-icons col-md-2 col-sm-12 col-lg-7 d-flex justify-content-center secbg">
+          <div className="social-icons col-md-2 col-sm-12 col-lg-7 d-flex justify-content-center align-items-center secbg">
             <ul className="list-unstyled text-center mb-0">
               <li className="list-unstyled-item">
                 <a href="#">
@@ -138,11 +137,13 @@ class ComingSoon extends Component {
 }
 
 ComingSoon.propTypes = {
-  errors: PropTypes.object.isRequired
+  errors: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  errors: state.errors
+  errors: state.errors,
+  auth: state.auth
 });
 
 export default connect(

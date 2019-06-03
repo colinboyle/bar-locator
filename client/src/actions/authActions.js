@@ -8,8 +8,7 @@ export const newsletterUser = email => dispatch => {
     .post("/api/users/newsletter", email)
     .then(res =>
       dispatch({
-        type: NEWSLETTER_SUCCESS,
-        payload: res.data
+        type: NEWSLETTER_SUCCESS
       })
     )
     .catch(err =>

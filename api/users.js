@@ -24,44 +24,28 @@ router.get("/test", (req, res) => res.json({ msg: "Users works" }));
 //@access   Public
 router.post("/newsletter", (req, res) => {
   const { errors, isValid } = validateNewsletterInput(req.body);
-  const { email } = req.body; // firstName, lastName } = req.body;
+  const { email } = req.body; //, firstName, lastName } = req.body;
+  console.log(`Trying to subscribe ${req.body.email}`);
   if (!isValid) {
     return res.status(400).json(errors);
   }
-  //Newsletter.findOne({ email: req.body.email }).then(user => {
-  //  if (user) {
-  //    errors.email = "You are already registered";
-  //    return res.status(404).json(errors);
-  //  } else {
-  //    const newNewsletterUser = new NewsletterUser({
-  //      email: req.body.email
-  //    });
-  //    newNewsletterUser
-  //      .save()
-  //      .then(user => res.json(user))
-  //      .catch(err => console.log(err));
-  //  }
-  //});
   const data = {
-    members: [
-      {
-        email_address: email,
-        status: "subscribed"
-        //merge_fields: {
-        //  FNAME: firstName,
-        //  LNAME: lastName
-        //}
-      }
-    ]
+    email_address: email,
+    status: "subscribed"
   };
+  //merge_fields: {
+  //  FNAME: firstName,
+  //  LNAME: lastName
+  //}
 
   const postData = JSON.stringify(data);
+  console.log(postData);
 
   const mailChimpKey =
     process.env.mailChimpKey || require("../config/keys").MailChimpAPIKey;
 
   const options = {
-    url: "https://us20.api.mailchimp.com/3.0/lists/fd4474e11a",
+    url: "https://us20.api.mailchimp.com/3.0/lists/fd4474e11a/members",
     method: "POST",
     user: "AlexNDevAcct@gmail.com: " + mailChimpKey,
     headers: {
@@ -72,16 +56,18 @@ router.post("/newsletter", (req, res) => {
   };
 
   request(options, (err, response, options) => {
+    console.log(JSON.stringify(response));
     if (err) {
-      const errors = { email: err };
-      res.status(400).json(errors);
+      const errors = { email: "Failed to subscribe. Please try again." };
+      console.log(err);
+      return res.status(400).json(errors);
     } else {
       if (response.statusCode === 200) {
-        const errors = { status: 200, ...response };
-        res.status(400).json(errors);
+        return res.json({ status: 200 });
       } else {
-        const errors = { ...response };
-        res.status(400).json(errors);
+        const errors = { email: "Failed to subscribe." };
+        console.log(response);
+        return res.status(400).json(errors);
       }
     }
   });
